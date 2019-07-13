@@ -9,7 +9,8 @@
         
         public ITrackable Parse(string line)
         {
-            logger.LogInfo("Begin parsing");
+            var cells = line.Split(',');
+            if (cells.Length < 3) return null;
 
             // Do not fail if one record parsing fails, return null
             return null; // TODO Implement
