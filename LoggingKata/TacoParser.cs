@@ -12,6 +12,13 @@
             var cells = line.Split(',');
             if (cells.Length < 3) return null;
 
+            string latitude = cells[0];
+            string longitude = cells[1];
+            string name = cells [2];
+            
+            double latitudeAsADouble = double.Parse(latitude);
+            double longitudeAsADouble = double.Parse(longitude);
+
             // Do not fail if one record parsing fails, return null
             return null; // TODO Implement
         }
