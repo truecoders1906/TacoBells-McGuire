@@ -6,7 +6,7 @@
     public class TacoParser
     {
         readonly ILog logger = new TacoLogger();
-        
+
         public ITrackable Parse(string line)
         {
             var cells = line.Split(',');
@@ -14,13 +14,17 @@
 
             string latitude = cells[0];
             string longitude = cells[1];
-            string name = cells [2];
-            
+            string name = cells[2];
+
             double latitudeAsADouble = double.Parse(latitude);
             double longitudeAsADouble = double.Parse(longitude);
 
-            // Do not fail if one record parsing fails, return null
             return null; // TODO Implement
         }
+    }
+    public class TacoBell : ITrackable
+    {
+        public string Name { get; set; }
+        public Point Location { get; set; }
     }
 }
