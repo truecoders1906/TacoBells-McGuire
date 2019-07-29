@@ -22,8 +22,27 @@ namespace LoggingKata
 
             var locations = lines.Select(parser.Parse).ToArray();
 
-            // TODO:  Find the two Taco Bells in Alabama that are the furthest from one another.
-            // HINT:  You'll need two nested forloops
+            ITrackable TacoBell1 = null;
+            ITrackable TacoBell2 = null;
+            double distanceOfTwoFarthest = 0;
+
+            foreach (ITrackable store in locations)
+            {
+                GeoCoordinate LocA = new GeoCoordinate(store.Location.Latitude, store.Location.Longitude);
+
+                foreach (ITrackable store2 in locations)
+                {
+                    GeoCoordinate LocB = new GeoCoordinate(store.Location.Latitude, store.Location.Longitude);
+                    double distanceBetweenCurrentStores = LocA.GetDistanceTo(LocB);
+                    if (distanceBetweenCurrentStores > distanceOfTwoFarthest)
+                    {
+                        distanceOfTwoFarthest = distanceBetweenCurrentStores;
+                        TacoBell1 = store;
+                        TacoBell2 = store2;
+                    }
+
+                }
+            }
         }
     }
 }
